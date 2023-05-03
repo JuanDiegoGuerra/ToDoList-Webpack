@@ -4,35 +4,13 @@ import enter from './enter.svg';
 
 import {
   getmylist, addmylist, editmylist, deletemylist,
-} from './functionality';
+} from './functionality.js';
 import { changeTodoStatus, removeCompletedTodos } from './TaskStatus.js';
 
 const reloadIcon = document.getElementById('reload-img');
 const enterIcon = document.getElementById('enter-icon');
 enterIcon.src = enter;
 reloadIcon.src = reload;
-const todoList = [
-  {
-    id: 1,
-    description: 'Finish project structure',
-    completed: false,
-  },
-  {
-    id: 2,
-    description: 'Add styles to the project',
-    completed: false,
-  },
-  {
-    id: 3,
-    description: 'Make changes on Awesome Books Project',
-    completed: false,
-  },
-  {
-    id: 4,
-    description: 'Prepare Dinner 😋',
-    completed: false,
-  },
-];
 
 const listGroup = document.querySelector('.list-container');
 const newTask = document.querySelector('.add-form').querySelector('input');
