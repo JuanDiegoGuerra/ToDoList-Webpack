@@ -65,7 +65,8 @@ body {
 }
 
 .enter-icon {
-  height: 15px;
+  width: 8%;
+  cursor: pointer;
 }
 
 .list-container {
@@ -90,11 +91,6 @@ body {
   margin-right: auto;
 }
 
-.more-logo {
-  height: 100%;
-  cursor: move;
-}
-
 .check-box {
   width: 14px;
   height: 14px;
@@ -110,10 +106,169 @@ body {
   font-weight: bold;
 }
 
-.clear-btn {
-  background-color: rgb(240, 240, 240);
-  padding: 15px;
-  text-align: center;
-  color: rgb(116, 116, 116);
+.todo-list {
+  height: 50px;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px #ddd solid;
+  background-color: #fff;
+}
+
+.todo-intro {
+  font-size: 15px;
+}
+
+.todo-intro-title {
+  font-weight: 600;
+  opacity: 0.9;
+  color: #545862;
+}
+
+.todo-intro i {
+  font-size: 17px;
+  opacity: 0.5;
+  color: #333;
+}
+
+.todo-add * {
+  color: #ddd;
+}
+
+.todo-add input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.todo-add input::placeholder {
+  color: #ddd;
+}
+
+.todo-add i {
+  font-size: 12px;
+}
+
+.todo-item {
+  position: relative;
+}
+
+.edit-focus-element {
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 0;
+  background-color: #fff;
+}
+
+.checked-icon {
+  color: green;
   cursor: pointer;
+  font-size: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.unchecked-icon {
+  font-size: 15px;
+  border: 2px rgb(90, 90, 90) solid;
+  cursor: pointer;
+  color: transparent;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.todo-item input {
+  width: 100%;
+  padding: 0 15px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: 100;
+  text-align: start;
+  position: relative;
+  z-index: 1;
+}
+
+.undecoration {
+  color: #000;
+  text-decoration: none;
+}
+
+.decoration {
+  opacity: 0.5;
+  color: #333;
+  text-decoration: line-through;
+}
+
+.delete-icon,
+.more-icon {
+  width: 10%;
+  opacity: 0.5;
+  color: #333;
+  cursor: pointer;
+}
+
+.delete-icon {
+  display: none;
+}
+
+.more-icon {
+  display: block;
+}
+
+.clear-btn {
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  background-color: #f1f2f5;
+  font-size: 16px;
+  cursor: pointer;
+  padding-top: 2vh;
+  text-align: center;
+}
+
+.clear-btn span {
+  color: #333;
+  font-weight: bold;
+  transition: background-color 1s, transform 1s;
+}
+
+.clear-btn span:hover {
+  transition: color 1s, transform 1s;
+  background: -webkit-linear-gradient(#800303, #d7d70c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.edit-todo:focus ~ .edit-focus-element {
+  background-color: #fffecb;
+}
+
+.delete-icon:active {
+  display: block;
+}
+
+.edit-todo:focus ~ .delete-icon {
+  display: block;
+}
+
+.edit-todo:focus ~ .more-icon {
+  display: none;
+}
+
+.delete-icon:active ~ .more-icon {
+  display: none;
 }
