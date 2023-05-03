@@ -2,21 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    index: './src/index.js',
-    //print: './src/print.js',
-  },
+  entry: { index: path.resolve(__dirname, 'src', 'index.js') },
+  mode: 'development',
   plugins: [
     new HtmlWebpackPlugin({
       //title: 'Output Management',
-      template: './src/index.html',
+      template: path.resolve(__dirname, 'src', 'index.html'),
     }),
   ],
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
-  },
   module: {
     rules: [
       {
@@ -25,7 +18,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        type: 'asset',
       },
     ],
   },
