@@ -1,9 +1,12 @@
 import './style.css';
-import moreIcon from './more.svg';
 import reload from './reload.svg';
 import enter from './enter.svg';
 
-const ToDoListContainer = document.getElementById('list-container');
+import {
+  getmylist, addmylist, editmylist, deletemylist,
+} from './functionality';
+import { changeTodoStatus, removeCompletedTodos } from './TaskStatus.js';
+
 const reloadIcon = document.getElementById('reload-img');
 const enterIcon = document.getElementById('enter-icon');
 enterIcon.src = enter;
@@ -22,7 +25,7 @@ const todoList = [
   {
     id: 3,
     description: 'Make changes on Awesome Books Project',
-    completed: true,
+    completed: false,
   },
   {
     id: 4,
@@ -31,23 +34,27 @@ const todoList = [
   },
 ];
 
-const renderList = (list) => {
-  let innerList = '';
-  if (list.length === 0) {
-    innerList = '<h3 class="list-placeholder">Add your first task!</h3>';
-  } else {
-    const sortedList = list.sort((a, b) => a.id - b.id);
-    sortedList.forEach((task) => {
-      innerList += `
-          <li class="to-do-tasks">
-            <div class="check-box ${task.completed ? 'completed' : ''}">${task.completed ? '✓' : ''}</div>
-            <p class="task-description ${task.completed ? 'line-through' : ''}">${task.description}</p>
-            <img class="more-logo" src="${moreIcon}"/>
-          </li>
-          `;
-    });
-  }
-  ToDoListContainer.innerHTML = innerList;
-};
+const listGroup = document.querySelector('.list-container');
+const newTask = document.querySelector('.add-form').querySelector('input');
+const submitIcon = document.querySelector('.add-form').querySelector('.enter-icon');
+newTask.addEventListener('keypress', (event) => addmylist(event));
+submitIcon.addEventListener('click', () => addmylist('clicked'));
 
-window.onload = renderList(todoList);
+listGroup.addEventListener('click', (event) => {
+  const clickedItem = event.target.classList[event.target.classList.length - 1];
+  const li = event.target.parentElement;
+  if (clickedItem === 'delete-icon') deletemylist(li.id);
+  if (clickedItem === 'checked-icon') changeTodoStatus({ index: li.id, status: false });
+  if (clickedItem === 'unchecked-icon') changeTodoStatus({ index: li.id, status: true });
+});
+
+listGroup.addEventListener('keypress', (event) => {
+  const pressedItem = event.target.classList[event.target.classList.length - 1];
+  const li = event.target.parentElement;
+  if (pressedItem === 'edit-todo') editmylist({ index: li.id, event });
+});
+
+const clearCompleted = document.querySelector('.clear-btn');
+clearCompleted.addEventListener('click', removeCompletedTodos);
+
+window.addEventListener('load', () => { getmylist(); });
