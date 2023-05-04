@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <img src="img/todolist_logo_Readme.JPG" alt="logo" width="50%"  height="auto" />
+  <img src="img/todolist_logo_Readme.JPG" alt="logo" width="70%"  height="auto" />
   <br/>
   <h3><b>To Do List - Webpack</b></h3>
 </div>
@@ -60,8 +60,8 @@
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-> Comming Soon
-<!-- - [To Do List - Live Demo]() -->
+
+- [To Do List - Live Demo](https://juandiegoguerra.github.io/ToDoList-Webpack/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -89,13 +89,13 @@ https://github.com/JuanDiegoGuerra/Awesome-Books-JS.git
 
 Clone this repository to your desired folder:
 
-https://github.com/JuanDiegoGuerra/Awesome-Books-JS.git
+https://github.com/JuanDiegoGuerra/ToDoList-Webpack.git
 
 ### Usage
 
 To run the project, execute the following command:
 
-git clone https://github.com/JuanDiegoGuerra/Awesome-Books-JS.git
+git clone https://github.com/JuanDiegoGuerra/ToDoList-Webpack.git
 
 ### Run tests
 
@@ -107,7 +107,7 @@ No implemented yet.
 
 You can deploy this project using:
 
-GH Pages, publish the branch in git Hub pages
+GH Pages, publish the branch in git Hub pages using main branch and /docs folder
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -118,9 +118,9 @@ GH Pages, publish the branch in git Hub pages
 
 👤 **Juan Diego Guerra (JD)**
 
-- GitHub: [@Juan Diego](https://github.com/JuanDiegoGuerra)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Juan Diego Guerra](https://github.com/JuanDiegoGuerra)
+- Instagram: [@Instagram Profile](https://www.instagram.com/jdxelric/)
+- LinkedIn: [@LinkedIn](https://linkedin.com/in/linkedinhandle)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
