@@ -5,7 +5,7 @@ import enter from './enter.svg';
 import {
   getmylist, addmylist, editmylist, deletemylist,
 } from './functionality.js';
-import { changeTodoStatus, removeCompletedTodos } from './TaskStatus.js';
+import { changeTodoStatus, DeleteUncompleted, DeleteCompleted } from './TaskStatus.js';
 
 const reloadIcon = document.getElementById('reload-img');
 const enterIcon = document.getElementById('enter-icon');
@@ -33,6 +33,9 @@ listGroup.addEventListener('keypress', (event) => {
 });
 
 const clearCompleted = document.querySelector('.clear-btn');
-clearCompleted.addEventListener('click', removeCompletedTodos);
+clearCompleted.addEventListener('click', DeleteCompleted);
+
+const EmptyTodo = document.querySelector('.reload-icon');
+EmptyTodo.addEventListener('click', DeleteUncompleted);
 
 window.addEventListener('load', () => { getmylist(); });
