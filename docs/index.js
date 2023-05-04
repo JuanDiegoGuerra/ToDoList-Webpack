@@ -1,5 +1,5 @@
-import reload from src='../docs/reload.svg';
-import enter from src='../docs/enter.svg';
+import reload from '../docs/reload.svg';
+import enter from '../docs/enter.svg';
 
 import {
   getmylist, addmylist, editmylist, deletemylist,
