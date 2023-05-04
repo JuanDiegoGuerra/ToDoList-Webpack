@@ -1,4 +1,4 @@
-import moreIcon from './more.svg';
+import moreIcon from src='../docs/more.svg';
 
 let mylist = JSON.parse(localStorage.getItem('mylist')) || [];// eslint-disable-line
 

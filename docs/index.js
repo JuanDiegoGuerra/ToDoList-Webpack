@@ -1,10 +1,10 @@
-import reload from './reload.svg';
-import enter from './enter.svg';
+import reload from src='../docs/reload.svg';
+import enter from src='../docs/enter.svg';
 
 import {
   getmylist, addmylist, editmylist, deletemylist,
-} from './functionality.js';
-import { changeTodoStatus, removeCompletedTodos } from './TaskStatus.js';
+} from '../docs/functionality.js';
+import { changeTodoStatus, removeCompletedTodos } from '../docs/TaskStatus.js';
 
 const reloadIcon = document.getElementById('reload-img');
 const enterIcon = document.getElementById('enter-icon');
