@@ -38,3 +38,13 @@ export const completedmylist = (id) => {
     }
     localStorage.setItem('myList', (list));
   };
+  
+  export const clearcompletedmylist = () => {
+    const list = JSON.parse(localStorage.getItem('myList'));
+    const newList = list.filter((task) => task.completed === false);
+    for (let i = 0; i < newList.length; i += 1) {
+      newList[i].id = i + 1;
+    }
+    localStorage.setItem('myList', newList);
+  };
+  
