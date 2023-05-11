@@ -24,3 +24,17 @@ export const deletemylist = (index) => {
   }
   localStorage.setItem('myList', JSON.stringify(list));
 };
+
+export const completedmylist = (id) => {
+    let list = JSON.parse(localStorage.getItem('myList'));
+    if (list === null) {
+      list = [];
+    }
+    const toggle = list.findIndex((task) => task.id === id);
+    if (!list[toggle].completed) {
+      list[toggle].completed = true;
+    } else {
+      list[toggle].completed = false;
+    }
+    localStorage.setItem('myList', (list));
+  };
