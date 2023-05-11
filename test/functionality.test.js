@@ -1,24 +1,29 @@
-import { addmylist, deletemylist } from './functionallityTest.js';
+import { JSDOM, } from 'jsdom';
+import { addmylist, deletemylist, completedmylist, clearcompletedmylist, editmylist, } from './functionallityTest.js';
+  
+  const dom = new JSDOM('<!doctype html><html><body></body></html>');
+  global.window = dom.window;
+  global.document = window.document;
 
-const localStorageMock = (() => {
-  let store = {};
-
-  return {
-    store,
-    getItem: ((key) => store[key] || []),
-    setItem: ((key, value) => {
-      store[key] = JSON.stringify(value);
-    }),
-    removeItem: ((key) => {
-      delete store[key];
-    }),
-    clear: (() => {
-      store = {};
-    }),
-  };
-})();
-
-global.localStorage = localStorageMock;
+  const localStorageMock = (() => {
+    let store = {};
+  
+    return {
+      store,
+      getItem: (key) => store[key] || [],
+      setItem: (key, value) => {
+        store[key] = JSON.stringify(value);
+      },
+      removeItem: (key) => {
+        delete store[key];
+      },
+      clear: () => {
+        store = {};
+      },
+    };
+  })();
+  
+  global.localStorage = localStorageMock;
 
 describe('addmylist', () => {
   it('Adding a new object "todo" and save it in Local Storage', () => {
@@ -44,7 +49,7 @@ describe('deletemylist', () => {
     const removeList = [
       {
         index: 1,
-        description: 'Testing Part 1',
+        description: 'Testing Part 2',
         completed: false,
       },
     ];
