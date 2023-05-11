@@ -48,3 +48,28 @@ export const completedmylist = (id) => {
     localStorage.setItem('myList', newList);
   };
   
+  export const editmylist = (id) => {
+    const list = JSON.parse(localStorage.getItem('myList'));
+    const textArea = document.getElementById(`text-area-${id}`);
+  
+    const edit = list.findIndex((task) => task.id === id);
+  
+    textArea.addEventListener('change', () => {
+      list[edit].desc = textArea.value;
+      textArea.innerText = list[edit].desc;
+      localStorage.setItem('myList', JSON.stringify(list));
+    });
+    textArea.addEventListener('blur', () => {
+      localStorage.setItem('myList', JSON.stringify(list));
+      setTimeout(() => {
+        textArea.parentElement.classList.remove('on-change');
+      }, 200);
+    });
+    textArea.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        localStorage.setItem('myList', JSON.stringify(list));
+        textArea.innerText = list[edit].desc;
+        textArea.blur();
+      }
+    });
+  };
