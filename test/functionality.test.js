@@ -1,5 +1,11 @@
-import { JSDOM, } from 'jsdom';
-import { addmylist, deletemylist, completedmylist, clearcompletedmylist, editmylist, } from './functionallityTest.js';
+import { JSDOM } from 'jsdom';
+import {
+  addmylist,
+  deletemylist,
+  completedmylist,
+  clearcompletedmylist,
+  editmylist,
+} from './functionallityTest.js';
 
 const dom = new JSDOM('<!doctype html><html><body></body></html>');
 global.window = dom.window;
@@ -37,9 +43,7 @@ describe('addmylist', () => {
     ];
 
     addmylist(mockDescription);
-    expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
-      expectedList,
-    );
+    expect(JSON.parse(localStorage.store.myList)).toStrictEqual(expectedList);
   });
 });
 
@@ -64,8 +68,8 @@ describe('deletemylist', () => {
 describe('editmylist', () => {
   beforeEach(() => {
     document.body.innerHTML = `
-        <textarea id="text-area-1"></textarea>
-        <textarea id="text-area-2"></textarea>
+        <textarea id='text-area-1'></textarea>
+        <textarea id='text-area-2'></textarea>
       `;
   });
 
@@ -74,11 +78,13 @@ describe('editmylist', () => {
   });
 
   it('allows one to update the description of the task at a particular index', () => {
-    const deleteContents = [{
-      id: 1,
-      desc: 'EDIT TASK',
-      completed: false,
-    }];
+    const deleteContents = [
+      {
+        id: 1,
+        desc: 'EDIT TASK',
+        completed: false,
+      },
+    ];
 
     localStorage.setItem('myList', deleteContents);
 
@@ -90,61 +96,79 @@ describe('Operations on Completed tasks', () => {
   describe('completedmylist', () => {
     it('should toggle completed attribute of a task in the localStorage', () => {
       const toggleId = 1;
-      const toggleList = [{
-        id: 1,
-        desc: 'Testing Part 1',
-        completed: false,
-      }];
-      const localExpected = [{
-        id: 1,
-        desc: 'Testing Part 1',
-        completed: true,
-      }];
+      const toggleList = [
+        {
+          id: 1,
+          desc: 'Testing Part 1',
+          completed: false,
+        },
+      ];
+      const localExpected = [
+        {
+          id: 1,
+          desc: 'Testing Part 1',
+          completed: true,
+        },
+      ];
 
       localStorage.setItem('myList', toggleList);
 
       completedmylist(toggleId);
-      expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(localExpected);
+      expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
+        localExpected
+      );
     });
   });
 
   describe('removeCompleted task', () => {
     it('removes all the tasks marked as completed', () => {
-      const deleteContents = [{
-        id: 1,
-        desc: 'Testing Part 1',
-        completed: false,
-      }, {
-        id: 2,
-        desc: 'Testing Part 2',
-        completed: true,
-      }];
-      const localExpected = [{
-        id: 1,
-        desc: 'Testing Part 1',
-        completed: false,
-      }];
+      const deleteContents = [
+        {
+          id: 1,
+          desc: 'Testing Part 1',
+          completed: false,
+        },
+        {
+          id: 2,
+          desc: 'Testing Part 2',
+          completed: true,
+        },
+      ];
+      const localExpected = [
+        {
+          id: 1,
+          desc: 'Testing Part 1',
+          completed: false,
+        },
+      ];
 
       localStorage.setItem('myList', deleteContents);
 
       clearcompletedmylist(deleteContents);
-      expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(localExpected);
+      expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
+        localExpected
+      );
     });
     it('should not remove the task not marked as completed', () => {
-      const deleteContents = [{
-        id: 1,
-        desc: 'Testing Part 1',
-        completed: false,
-      }, {
-        id: 2,
-        desc: 'Testing Part 2',
-        completed: false,
-      }];
+      const deleteContents = [
+        {
+          id: 1,
+          desc: 'Testing Part 1',
+          completed: false,
+        },
+        {
+          id: 2,
+          desc: 'Testing Part 2',
+          completed: false,
+        },
+      ];
 
       localStorage.setItem('myList', deleteContents);
 
       clearcompletedmylist(deleteContents);
-      expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(deleteContents);
+      expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
+        deleteContents
+      );
     });
   });
 });
