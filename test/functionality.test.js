@@ -107,4 +107,44 @@ describe('Operations on Completed tasks', () => {
       expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(localExpected);
     });
   });
+
+  describe('removeCompleted task', () => {
+    it('removes all the tasks marked as completed', () => {
+      const deleteContents = [{
+        id: 1,
+        desc: 'Testing Part 1',
+        completed: false,
+      }, {
+        id: 2,
+        desc: 'Testing Part 2',
+        completed: true,
+      }];
+      const localExpected = [{
+        id: 1,
+        desc: 'Testing Part 1',
+        completed: false,
+      }];
+
+      localStorage.setItem('myList', deleteContents);
+
+      clearcompletedmylist(deleteContents);
+      expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(localExpected);
+    });
+    it('should not remove the task not marked as completed', () => {
+      const deleteContents = [{
+        id: 1,
+        desc: 'Testing Part 1',
+        completed: false,
+      }, {
+        id: 2,
+        desc: 'Testing Part 2',
+        completed: false,
+      }];
+
+      localStorage.setItem('myList', deleteContents);
+
+      clearcompletedmylist(deleteContents);
+      expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(deleteContents);
+    });
+  });
 });
