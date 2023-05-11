@@ -60,3 +60,28 @@ describe('deletemylist', () => {
     expect(JSON.parse(localStorage.store.myList)).toStrictEqual('[]');
   });
 });
+
+describe('editmylist', () => {
+    beforeEach(() => {
+      document.body.innerHTML = `
+        <textarea id="text-area-1"></textarea>
+        <textarea id="text-area-2"></textarea>
+      `;
+    });
+  
+    afterEach(() => {
+      jest.restoreAllMocks();
+    });
+  
+    it('should edit the description of the task with the parameter id', () => {
+      const deleteContents = [{
+        id: 1,
+        desc: 'EDIT TASK',
+        completed: false,
+      }];
+  
+      localStorage.setItem('myList', deleteContents);
+  
+      editmylist(1);
+    });
+  });
