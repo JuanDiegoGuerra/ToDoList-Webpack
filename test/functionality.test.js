@@ -22,7 +22,7 @@ global.localStorage = localStorageMock;
 
 describe('addmylist', () => {
   it('Adding a new object "todo" and save it in Local Storage', () => {
-    const mockDescription  = 'Testing Part 1';
+    const mockDescription = 'Testing Part 1';
     const expectedList = [
       {
         index: 1,
@@ -31,8 +31,8 @@ describe('addmylist', () => {
       },
     ];
 
-    addmylist(mockDescription );
-    expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(
+    addmylist(mockDescription);
+    expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
       expectedList,
     );
   });
@@ -52,6 +52,6 @@ describe('deletemylist', () => {
     localStorage.setItem('myList', removeList);
 
     deletemylist(removeindex);
-    expect(JSON.parse(localStorage.store['myList'])).toStrictEqual('[]');
+    expect(JSON.parse(localStorage.store.myList)).toStrictEqual('[]');
   });
 });
