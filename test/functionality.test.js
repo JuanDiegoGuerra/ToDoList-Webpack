@@ -1,0 +1,1 @@
+import { addmylist, deletemylist } from './functionallityTest.js';
