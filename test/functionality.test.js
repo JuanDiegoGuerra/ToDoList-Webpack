@@ -38,3 +38,20 @@ describe('addmylist', () => {
   });
 });
 
+describe('deletemylist', () => {
+  it('Deleting an existing object "todo" from the Local Storage using its index', () => {
+    const removeindex = 1;
+    const removeList = [
+      {
+        index: 1,
+        description: 'Testing Part 1',
+        completed: false,
+      },
+    ];
+
+    localStorage.setItem('myList', removeList);
+
+    deletemylist(removeindex);
+    expect(JSON.parse(localStorage.store['myList'])).toStrictEqual('[]');
+  });
+});
