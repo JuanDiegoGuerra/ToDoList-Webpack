@@ -19,3 +19,22 @@ const localStorageMock = (() => {
 })();
 
 global.localStorage = localStorageMock;
+
+describe('addmylist', () => {
+  it('Adding a new object "todo" and save it in Local Storage', () => {
+    const mockDescription  = 'Testing Part 1';
+    const expectedList = [
+      {
+        index: 1,
+        description: 'Testing Part 1',
+        completed: false,
+      },
+    ];
+
+    addmylist(mockDescription );
+    expect(JSON.parse(localStorage.store['myList'])).toStrictEqual(
+      expectedList,
+    );
+  });
+});
+
