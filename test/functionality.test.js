@@ -115,7 +115,7 @@ describe('Operations on Completed tasks', () => {
 
       completedmylist(toggleId);
       expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
-        localExpected
+        localExpected,
       );
     });
   });
@@ -146,7 +146,7 @@ describe('Operations on Completed tasks', () => {
 
       clearcompletedmylist(deleteContents);
       expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
-        localExpected
+        localExpected,
       );
     });
     it('should not remove the task not marked as completed', () => {
@@ -167,7 +167,7 @@ describe('Operations on Completed tasks', () => {
 
       clearcompletedmylist(deleteContents);
       expect(JSON.parse(localStorage.store.myList)).toStrictEqual(
-        deleteContents
+        deleteContents,
       );
     });
   });
